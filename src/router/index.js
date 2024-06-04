@@ -9,7 +9,7 @@ export default new Router({
       redirect: '/'
     },
     {
-      path: '/resume',
+      path: '/resume/*',
       name: 'NotFound',
       component: resolve => require(['@/view/NotFound'], resolve),
     },  
@@ -17,7 +17,6 @@ export default new Router({
       path: '/',
       name: 'PageView',
       component: resolve => require(['@/view/PageView'], resolve),
-      // component: () => import('@/view/PageView'),
       children: [
         {
           path: '/',
