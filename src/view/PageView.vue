@@ -1,6 +1,9 @@
 <template>
     <div id="container">
-        <router-view />
+        <Header></Header>
+        <router-view/>
+        <Footer></Footer>
+        <GoTop></GoTop>
     </div>
 </template>
 <script>

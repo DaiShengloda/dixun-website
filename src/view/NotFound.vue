@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <router-view />
-  </div>
+  <div id="subapp-container"></div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'NotFound'
 }
 </script>
 

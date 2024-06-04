@@ -7,7 +7,13 @@ export default new Router({
     {
       path: '*',
       redirect: '/'
-    }, {
+    },
+    {
+      path: '/resume',
+      name: 'NotFound',
+      component: resolve => require(['@/view/NotFound'], resolve),
+    },  
+    {
       path: '/',
       name: 'PageView',
       component: resolve => require(['@/view/PageView'], resolve),
