@@ -38,23 +38,32 @@ export default {
           label: "蓄热式高温折流污水外理",
         },
       ],
-      activeName: "electorPrecipitator"
+      activeName: ""
     }
   },
-  watch: {
-    $route(to, from) {
-      const { path: toPath } = to
-      const { path: fromPath } = from
-      if(fromPath === "/" || toPath == fromPath)return
-      if(toPath.includes('electorPrecipitator')){
-        this.activeName = 'electorPrecipitator'
-      }else if(toPath.includes('sewageDisposal')) {
-        this.activeName = 'sewageDisposal'
-      }
-    }
+  beforeRouteUpdate (to, from, next) {
+    this.initActiveName(this, to, from);
+    next()
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      // 通过 `vm` 访问组件实例
+      vm.initActiveName(vm, to, from);
+    })
   },
   methods: {
+    initActiveName(vm, to, from) {
+      const { path: toPath } = to
+      const { path: fromPath } = from
+      if(toPath == fromPath)return
+      if(toPath.includes('electorPrecipitator')){
+        vm.activeName = 'electorPrecipitator'
+      }else if(toPath.includes('sewageDisposal')) {
+        vm.activeName = 'sewageDisposal'
+      }
+    },
     handleClick({name}) {
+      if(this.$route.fullPath.includes(name))return false;
       this.$router.push(name)
     }
   },
